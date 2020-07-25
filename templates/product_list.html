@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Product List</h2>
+<br>
+<br>
+<div class="row">
+    {% for item in items %}
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src="{{ item.imagePath }}" alt="..." class="image-responsive">
+            <div class="caption">
+                <h5 class="title">{{item.title}} </h5>
+                <p class="description">{{item.description}}</p>
+                {% if item.leodeliverable %}
+                <p>Leo Delivery is available</p>
+                {% else %}
+                <p>Leo Delivery is not available for this item</p>
+                {% endif %}
+                <div class="clearfix">
+                    <div class="price float-left float-bottom">${{ item.price}}
+                    </div>
+                    <a href="#" class="btn btn-success float-right" role="button">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
